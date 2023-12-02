@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  php:
+    platform: 'linux/x86_64'
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile
+    ports:
+      - '8888:80'
+    networks:
+      - pdp-network
+    volumes:
+      - ./:/var/www/html
+
+  db:
+    image: 'mysql:8.0'
+    platform: 'linux/x86_64'
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-root}
+    networks:
+      - pdp-network
+    ports:
+      - "33666:3306"
+    command: mysqld --sql_mode=""
+    restart: unless-stopped
+    volumes:
+      - ./sql:/home
+
+networks:
+  pdp-network:
+    driver: bridge

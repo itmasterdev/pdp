@@ -1,0 +1,19 @@
+{
+  "name": "otsaliuk/pdp",
+  "description": "desc",
+  "authors": [
+    {
+      "name": "dm",
+      "email": "dmytro-o@a-team.global"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/",
+      "Framework\\": "framework/"
+    }
+  },
+  "require-dev": {
+    "symfony/var-dumper": "^6.3"
+  }
+}
