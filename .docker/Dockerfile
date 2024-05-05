@@ -41,6 +41,10 @@ ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 
 RUN a2enmod rewrite headers
 
+RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
+
+COPY ./xdebug.ini "${PHP_INI_DIR}/conf.d"
+
 RUN chown -R www-data:www-data /var/www/html \
   && a2enmod rewrite
 

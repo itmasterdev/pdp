@@ -6,11 +6,13 @@ use Framework\Router;
 
 class App
 {
-    public static function run()
+    /**
+     * @return void
+     */
+    public static function run(): void
     {
         foreach (Router::getRoutesGet() as $routeConfig) {
             $routeDispatcher = new RouteDispatcher($routeConfig);
-
             $routeDispatcher->process();
         }
     }

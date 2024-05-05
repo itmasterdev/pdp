@@ -2,6 +2,11 @@ version: '3.8'
 services:
   php:
     platform: 'linux/x86_64'
+    environment:
+      PHP_IDE_CONFIG: "serverName=localhost"
+      XDEBUG_CONFIG: "idekey=PHPSTORM"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     build:
       context: .
       dockerfile: .docker/Dockerfile

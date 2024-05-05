@@ -6,16 +6,22 @@ class Router
 {
     private static array $routesGet = [];
 
+    /**
+     * @return array
+     */
     public static function getRoutesGet(): array
     {
         return self::$routesGet;
     }
 
+    /**
+     * @param string $route
+     * @param array $action
+     * @return RouteConfig
+     */
     public static function get(string $route, array $action): RouteConfig
     {
-        $controller = $action[0];
-        $action = $action[1];
-        $routeConfig = new RouteConfig($route, $controller, $action);
+        $routeConfig = new RouteConfig($route, $action[0], $action[1]);
         self::$routesGet[] = $routeConfig;
 
         return $routeConfig;

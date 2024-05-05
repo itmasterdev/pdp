@@ -2,12 +2,13 @@
 
 namespace App\Controllers;
 
-use Framework\Request;
+use Framework\Controller;
+use Framework\View;
 
-class HomeController
+class HomeController extends Controller
 {
     public function index()
     {
-        return 'Index Home';
+        return View::render('home.index');
     }
 }

@@ -2,18 +2,19 @@
 
 namespace App\Controllers;
 
-use Framework\Request;
+use Framework\Controller;
+use Framework\View;
 
-class UserController
+class UserController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         return 'INdex';
         //return 'User ID: ' . $id;
     }
 
-    public function show()
+    public function show(int $id, int $status)
     {
-        return 'Show';
+        return View::render('user.show', compact('id', 'status'));
     }
 }
